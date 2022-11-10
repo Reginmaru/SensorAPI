@@ -9,7 +9,6 @@ def get_record(response,id):
 
 def list_all_records(response):
     records = Record.objects.all()
-    print(records)
     new_form = None
     filter_form = None
     if response.method == "POST":
@@ -54,10 +53,8 @@ def list_all_records(response):
                         lower = Record.objects.filter(value__lte=value)
                 
                 records = d_range & name & higher & lower
-                print(records)
     else:
         new_form = new_record()
         filter_form = filter_records()
-    
         
     return render(response,"main/all_records.html", {"records": records, "new_form": new_form, "filter_form": filter_form})
