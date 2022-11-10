@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <!-- Form -->
+    <Form method="post" action="/api/sensor/">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit", name="save_sensor">Create New Sensor</button>
+    </Form>
+    <div>
+    {% for i in sensors %}
+        <div style="padding:10px;">
+            <p>Id: {{i.id}}</p>
+            <p>Name: {{i.name}}</p>
+            <p>Unit: {{i.unit}}</p>
+        </div>
+    {% endfor %}
+    </div>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<!-- Form -->
+<div>
+    <Form method="post" action="/api/data/" id="new">
+        {% csrf_token %}
+        {{new_form}}
+        <button type="submit" , name="form_type" value="new">Create New Record</button>
+    </Form>
+</div>
+<div>
+    <Form method="post" action="/api/data/" id="filter">
+        {% csrf_token %}
+        {{filter_form}}
+        <button type="submit" , name="form_type" value="filter">Filter Record</button>
+    </Form>
+</div>
+<div>
+    {% for i in records %}
+    <div style="padding:10px;">
+        <p>Id: {{i.id}}</p>
+        <p>Date: {{i.date}}</p>
+        <p>Sensor name: {{i.sensor.name}}</p>
+        <p>Value: {{i.value}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</html>
