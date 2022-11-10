@@ -1,0 +1,144 @@
+{
+    "info": {
+        "title": "Ramiro's SensorAPI"
+    },
+    "paths": {
+        "/api/sensor/": {
+            "get": {
+                "summary": "List all sensors",
+                "responses": {
+                    "200": {
+                        "description": "a list of sensors"
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a sensor",
+                "responses": {
+                    "200": {
+                        "description": "sensor created or sends you to another page where you can press return"
+                    }
+                }
+            }
+        },
+        "/api/sensor/{sensorId}": {
+            "get": {
+                "summary": "Info on specific sensor",
+                "parameters": [
+                    {
+                        "id": "sensorId",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "gets info on sensor"
+                    },
+                    "default": {
+                        "description": "id doesn't exist"
+                    }
+                }
+            }
+        },
+        "/api/record/{recordId}": {
+            "get": {
+                "summary": "Info on specific record",
+                "parameters": [
+                    {
+                        "id": "recordId",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "gets info on record"
+                    },
+                    "default": {
+                        "description": "id doesn't exist"
+                    }
+                }
+            }
+        },
+        "/api/record/": {
+            "get": {
+                "summary": "List all records",
+                "responses": {
+                    "200": {
+                        "description": "a list of sensors"
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            },
+            "post_0": {
+                "summary": "Create a record",
+                "responses": {
+                    "200": {
+                        "description": "record created or sends you to another page where you can press return"
+                    }
+                }
+            },
+            "post_1": {
+                "summary": "filter records",
+                "responses": {
+                    "200": {
+                        "description": "returns a list of records that fit filter"
+                    },
+                    "default": {
+                        "description": "sensor name doesn't exist"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Sensor": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "unit"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "unit": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Record": {
+                "type":"object",
+                "required": [
+                    "date",
+                    "sensor",
+                    "value"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "date": {
+                        "type": "datetime"
+                    },
+                    "sensor": {
+                        "type": "object"
+                    },
+                    "value": {
+                        "type": "float"
+                    }
+                }
+            }
+        }
+    }
+}
